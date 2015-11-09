@@ -1,0 +1,28 @@
+From 058ff15661d138c627e5fbb224db68d5b6823b1e Mon Sep 17 00:00:00 2001
+From: Pau Garcia i Quiles <pgquiles@elpauer.org>
+Date: Mon, 9 Nov 2015 16:58:06 +0100
+Subject: [PATCH] Support PREFIX and DESTDIR and make sure we build the tool
+ before trying to install it
+
+---
+ Makefile | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 52506b9..082b4cb 100644
+--- a/Makefile
++++ b/Makefile
+@@ -7,6 +7,7 @@ hciattach_rtk.o:hciattach_rtk.c
+ clean:
+ 	rm -f *.o  rtk_hciattach
+ 
+-install:
+-	mkdir -p /lib/firmware/rtl_bt
+-	cp -p rtlbt_* /lib/firmware/rtl_bt/.
++install: rtk_hciattach
++	install -p rtk_hciattach $(DESTDIR)$(PREFIX)/bin/
++	mkdir -p $(DESTDIR)/lib/firmware/rtl_bt
++	cp -p rtlbt_* $(DESTDIR)/lib/firmware/rtl_bt/.
+-- 
+2.5.0
+

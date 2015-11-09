@@ -1,0 +1,3 @@
+usr/bin/rtk_hciattach
+lib/firmware/rtl_bt/*
+etc/bluetooth/rtl8723bsbt.conf

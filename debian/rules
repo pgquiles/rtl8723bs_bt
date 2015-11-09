@@ -1,0 +1,15 @@
+#!/usr/bin/make -f
+
+%:
+	dh $@ --with systemd
+
+#override_dh_installdirs:
+#	mkdir -p debian/tmp/lib/firmware/rtl_bt
+#	mkdir -p debian/tmp/usr/bin
+#	mkdir -p debian/tmp/etc/bluetooth
+
+override_dh_install:
+	make install DESTDIR=$(CURDIR)/debian/rtl8723bsbt/ PREFIX=usr/
+	install -p debian/rtl8723bsbt.conf $(CURDIR)/debian/rtl8723bsbt/etc/bluetooth/
+
+override_dh_auto_install:

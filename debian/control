@@ -1,0 +1,20 @@
+Source: rtl8723bsbt
+Section: kernel
+Priority: optional
+Maintainer: Pau Garcia i Quiles <pgquiles@elpauer.org>
+Build-Depends: debhelper (>= 9), dkms, dh-systemd
+Standards-Version: 3.9.6.1
+Homepage: http://www.realtek.com.tw/
+Vcs-Git: https://github.com/lwfinger/rtl8723bs_bt.git
+Vcs-Browser: https://github.com/lwfinger/rtl8723bs_bt
+
+Package: rtl8723bsbt
+Architecture: all
+Depends: ${misc:Depends}, linux-libc-dev, libc6-dev, bluez
+XB-Modaliases: ${modaliases}
+Description: daemon enabling Bluetooth on the rtl8723bs chip
+ The rtl8723bs network device includes a Bluetooth chip which requires a
+ daemon to load and enable the firmware, configuration and managing the
+ communication.
+ .
+ This package provides the tool, firmware and configuration files.

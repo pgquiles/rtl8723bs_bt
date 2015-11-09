@@ -1,0 +1,12 @@
+[Unit]
+Description=Realtek r8723bs Bluetooth daemon
+After=syslog.target
+
+[Service]
+Type=forking
+EnvironmentFile=/etc/bluetooth/rtl8723bsbt.conf
+ExecStart=/usr/bin/rtk_hciattach -n -s 115200 $TTY rtk_h5
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target
