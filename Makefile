@@ -7,6 +7,7 @@ hciattach_rtk.o:hciattach_rtk.c
 clean:
 	rm -f *.o  rtk_hciattach
 
-install:
-	mkdir -p /lib/firmware/rtl_bt
-	cp -p rtlbt_* /lib/firmware/rtl_bt/.
+install: rtk_hciattach
+	install -p rtk_hciattach $(DESTDIR)$(PREFIX)/bin/
+	mkdir -p $(DESTDIR)/lib/firmware/rtl_bt
+	cp -p rtlbt_* $(DESTDIR)/lib/firmware/rtl_bt/.
